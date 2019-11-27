@@ -26,7 +26,7 @@ You can use the tool without installing software via the following its [Docker i
 Simply execute the following command from the project's root directory:
 
 ```
-$ docker run -v $(pwd):/data osoco/readme-generator [--help]
+$ docker run -v $(pwd):/data osoco/readme-generator:latest [--help]
 ```
 
   
