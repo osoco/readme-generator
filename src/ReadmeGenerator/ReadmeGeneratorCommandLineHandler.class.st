@@ -4,9 +4,10 @@ I am the command line handler for Readme Generator.
 My keyword is ""readme-generator"".
 
 Options:
-  [--template]     Mustache template file for README
-  [--pomFileName]  A Maven POM file name to extract project's metadata
-  [--outputFile]   The file to output README contents
+  [--baseDirectory ]   A directory where files can be found (default: /data)
+  [--template]         Mustache template file for README (default: README.tmpl)
+  [--pomFileName]      A Maven POM file name to extract project's metadata (default: pom.xml)
+  [--outputFile]       The file to output README contents (default: README)
 "
 Class {
 	#name : #ReadmeGeneratorCommandLineHandler,
@@ -49,7 +50,7 @@ ReadmeGeneratorCommandLineHandler >> activate [
 
 { #category : #activation }
 ReadmeGeneratorCommandLineHandler >> baseDirectory [
-	^ baseDirectory ifNil: [ FileSystem workingDirectory ]
+	^ baseDirectory ifNil: [ '/data' asFileReference ]
 ]
 
 { #category : #activation }
