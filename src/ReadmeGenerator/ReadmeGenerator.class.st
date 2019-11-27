@@ -104,7 +104,7 @@ ReadmeGenerator >> generate [
 { #category : #'private - generating' }
 ReadmeGenerator >> generateEffectivePomFileAndThen: aBlock [
 	OSSUnixSubprocess new
-		command: '/run/current-system/sw/bin/mvn';
+		command: 'mvn';
 		arguments: #('help:effective-pom' '-Doutput=effective-pom.xml');
 		runAndWaitOnExitDo: [ :process :outString | aBlock value: 'effective-pom.xml' ]
 ]
