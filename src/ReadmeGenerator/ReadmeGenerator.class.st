@@ -66,6 +66,7 @@ ReadmeGenerator >> generate [
 					('email' -> (node elementAt: 'email') stringValue).
 					('organization' -> (node elementAt: 'organization') stringValue).
 					('url' -> (node elementAt: 'url') stringValue).
+					('picUrl' -> (XPath for: 'properties/picUrl' in: node) stringValue).
 					('role' -> (XPath for: 'roles/role' in: node) stringValue)}
 						asDictionary ].
 			contributors := (XPath
@@ -76,6 +77,7 @@ ReadmeGenerator >> generate [
 					('email' -> (node elementAt: 'email') stringValue).
 					('organization' -> (node elementAt: 'organization') stringValue).
 					('url' -> (node elementAt: 'url') stringValue).
+					('picUrl' -> (XPath for: 'properties/picUrl' in: node) stringValue).
 					('role' -> (XPath for: 'roles/role' in: node) stringValue)}
 						asDictionary ].
 			scmUrl := (XPath for: 'project/scm/url' in: pomDoc) stringValue.

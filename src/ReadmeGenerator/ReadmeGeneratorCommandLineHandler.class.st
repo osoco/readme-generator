@@ -44,8 +44,7 @@ ReadmeGeneratorCommandLineHandler >> activate [
 		forPom: pomFileName
 		usingTemplate: template
 		inWorkingDirectory: self baseDirectory) generate.
-   
-	(self baseDirectory / self outputFileOption) writeStreamDo: [ :stream | stream nextPutAll: result].
+	self writeOutput: result.
 	self exitSuccess
 ]
 
@@ -56,7 +55,7 @@ ReadmeGeneratorCommandLineHandler >> baseDirectory [
 
 { #category : #activation }
 ReadmeGeneratorCommandLineHandler >> outputFileOption [
-	^ self optionAt: 'outputFile' ifAbsent: [ 'README.md' ]
+	^ self optionAt: 'outputFile' ifAbsent: [ 'README' ]
 ]
 
 { #category : #activation }
@@ -67,4 +66,9 @@ ReadmeGeneratorCommandLineHandler >> pomFileNameOption [
 { #category : #activation }
 ReadmeGeneratorCommandLineHandler >> templateOption [
 	^ self optionAt: 'template' ifAbsent: [ 'README.tmpl' ]
+]
+
+{ #category : #activation }
+ReadmeGeneratorCommandLineHandler >> writeOutput: aString [
+(self baseDirectory / self outputFileOption) writeStreamDo: [ :stream | stream nextPutAll: aString ]
 ]
