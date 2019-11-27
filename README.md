@@ -2,12 +2,21 @@
 
 # README Generator
 
-## Description
 
 
 The README Generator is a Pharo Smalltalk based tool to auto-generate a software project's README file using the metadata fetched from sources of truth like Maven's POM file and/or Makefiles.
     
 This way you avoid data repetition and inconsistencies in documentation. You should never edit manually your project's README, but regenerate it every time the project's metadata are updated.
+
+## Installation
+
+```Smalltalk
+Metacello new
+    baseline: 'ReadmeGenerator';
+    repository: 'github://osoco/READMEGenerator/src';
+    load.
+```
+
   
 
 
@@ -50,9 +59,9 @@ run                           Run the generator
 * <img src="https://osoco.es/images/personas/rafael-luque.jpg" height="30"> [Rafael Luque](https://osoco.es) (*Pharo Developer*)
 
 
+## License
 
-
-er]
+* MIT License
 
 
 

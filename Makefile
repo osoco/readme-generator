@@ -46,4 +46,4 @@ build-docker: build ## Run all tests
 ## -------
 
 run: ## Run the generator
-	@docker run -v $$(pwd):/data osoco/readme-generator:latest 
+	@docker run -v $$(pwd):/data osoco/readme-generator:latest --outputFile=README.md

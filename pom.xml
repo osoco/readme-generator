@@ -11,9 +11,20 @@
   <version>1.0-SNAPSHOT</version>
   
   <description>
-<![CDATA[The README Generator is a Pharo Smalltalk based tool to auto-generate a software project's README file using the metadata fetched from sources of truth like Maven's POM file and/or Makefiles.
+<![CDATA[
+The README Generator is a Pharo Smalltalk based tool to auto-generate a software project's README file using the metadata fetched from sources of truth like Maven's POM file and/or Makefiles.
     
-This way you avoid data repetition and inconsistencies in documentation. You should never edit manually your project's README, but regenerate it every time the project's metadata are updated.]]>
+This way you avoid data repetition and inconsistencies in documentation. You should never edit manually your project's README, but regenerate it every time the project's metadata are updated.
+
+## Installation
+
+```Smalltalk
+Metacello new
+    baseline: 'ReadmeGenerator';
+    repository: 'github://osoco/READMEGenerator/src';
+    load.
+```
+]]>
   </description>
 
   <developers>
@@ -35,5 +46,11 @@ This way you avoid data repetition and inconsistencies in documentation. You sho
   <scm>
     <url>https://github.com/osoco/READMEGenerator</url>
   </scm>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+    </license>    
+  </licenses>
 
 </project>
