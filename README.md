@@ -47,15 +47,12 @@ run                           Run the generator
 ## Team
 
 
-* <img src="https://osoco.es/images/personas/rafael-luque.jpg" height="30"> [Rafael Luque](https://osoco.es) - [Developer]
+* <img src="https://osoco.es/images/personas/rafael-luque.jpg" height="30"> [Rafael Luque](https://osoco.es) (*Pharo Developer*)
 
 
 
 
-
-
-
-loper]
+er]
 
 
 

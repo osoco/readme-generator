@@ -23,7 +23,7 @@ This way you avoid data repetition and inconsistencies in documentation. You sho
       <url>https://osoco.es</url>
       <email>rafael.luque_AT_osoco.es</email>
       <roles>
-        <role>Developer</role>
+        <role>Pharo Developer</role>
       </roles>
       <timezone>Europe/Madrid</timezone>
       <properties>
