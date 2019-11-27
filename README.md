@@ -47,7 +47,7 @@ run                           Run the generator
 ## Team
 
 
-* ![Rafael Luque's picture](https://osoco.es/images/personas/rafael-luque.jpg| width=40) [Rafael Luque](https://osoco.es) - [Developer]
+* ![Rafael Luque's picture](https://osoco.es/images/personas/rafael-luque.jpg | width=40) [Rafael Luque](https://osoco.es) - [Developer]
 
 
 
