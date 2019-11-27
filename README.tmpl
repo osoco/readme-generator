@@ -1,0 +1,33 @@
+{{#pomMetadata}}
+
+# {{name}}
+
+## Description
+
+{{description}}
+
+{{/pomMetadata}}
+
+## Usage
+
+The targets to build or run the application are defined via its [Makefile](Makefile):
+
+```shell
+{{#makefile}}help-nocolor{{/makefile}}
+```
+
+{{#pomMetadata}}
+
+## Project Links
+
+{{#scm}}
+* Source Code: [BitBucket]({{url}}){{/scm}}
+
+## Team
+
+{{#developers}}
+* [{{name}}]({{url}}) <[{{email}}](mailto:{{email}})> - [{{role}}]
+{{/developers}}
+
+{{/pomMetadata}}
+

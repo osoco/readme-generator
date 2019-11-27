@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>es.osoco</groupId>  
+  <artifactId>READMEGenerator</artifactId>
+  <name>README Generator</name>
+  <version>1.0-SNAPSHOT</version>
+  
+  <description>
+    The README Generator is a Pharo Smalltalk based tool to auto-generate a software project's README file
+    using the metadata fetched from sources of truth like Maven's POM file and/or Makefiles.
+
+    This way you avoid data repetition and inconsistencies in documentation. You should never edit manually
+    your project's README, but regenerate it every time the project's metadata are updated.
+  </description>
+
+  <developers>
+    <developer>
+      <name>Rafael Luque</name>
+      <organization>OSOCO</organization>      
+      <url>https://osoco.es</url>
+      <email>rafael.luque_AT_osoco.es</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>Europe/Madrid</timezone>
+      <properties>
+        <picUrl>https://osoco.es/images/personas/rafael-luque.jpg</picUrl>
+      </properties>
+    </developer>
+  </developers>
+
+  <scm>
+    <url>https://github.com/osoco/READMEGenerator</url>
+  </scm>
+
+</project>
