@@ -47,7 +47,12 @@ run                           Run the generator
 ## Team
 
 
-* [Rafael Luque](https://osoco.es) <[rafael.luque_AT_osoco.es](mailto:rafael.luque_AT_osoco.es)> - [Developer]
+* ![Rafael Luque's picture](| width=80) [Rafael Luque](https://osoco.es) - [Developer]
+
+
+
+
+.es)> - [Developer]
 
 
 
