@@ -22,7 +22,7 @@ BaselineOfReadmeGenerator >> baseline: spec [
 BaselineOfReadmeGenerator >> mustache: spec [
 	spec
 		baseline: 'Mustache'
-		with: [ spec repository: 'git://noha/mustache/repository' ]
+		with: [ spec repository: 'github://noha/mustache/repository' ]
 ]
 
 { #category : #baselines }
