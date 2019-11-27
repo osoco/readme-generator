@@ -18,11 +18,23 @@ This way you avoid data repetition and inconsistencies in documentation. You sho
 
 ## Installation
 
+You can install this tool evaluating the following expression in a Pharo image:
+
 ```Smalltalk
 Metacello new
     baseline: 'ReadmeGenerator';
     repository: 'github://osoco/READMEGenerator/src';
     load.
+```
+
+## Running with Docker
+
+You can use the tool without installing software via the following its [Docker image](https://hub.docker.com/r/osoco/readme-generator).
+
+Simply execute the following command from the project's root directory:
+
+```
+$ docker run -v $(pwd):/data osoco/readme-generator [--help]
 ```
 ]]>
   </description>
