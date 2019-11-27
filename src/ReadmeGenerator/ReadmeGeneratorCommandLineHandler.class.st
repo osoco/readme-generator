@@ -42,9 +42,10 @@ ReadmeGeneratorCommandLineHandler >> activate [
 		fullName.
 	result := (ReadmeGenerator
 		forPom: pomFileName
-		usingTemplate: template) generate.
-	self stdout nextPutAll: result.
-	self stdout flush.
+		usingTemplate: template
+		inWorkingDirectory: self baseDirectory) generate.
+   
+	(self baseDirectory / self outputFileOption) writeStreamDo: [ :stream | stream nextPutAll: result].
 	self exitSuccess
 ]
 

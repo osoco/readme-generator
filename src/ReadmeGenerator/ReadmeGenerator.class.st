@@ -13,24 +13,27 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'pom',
-		'template'
+		'template',
+		'workingDirectory'
 	],
 	#category : #'ReadmeGenerator-Core'
 }
 
 { #category : #building }
-ReadmeGenerator class >> forPom: pomFileName usingTemplate: mustacheTemplateContents [
+ReadmeGenerator class >> forPom: pomFileName usingTemplate: mustacheTemplateContents inWorkingDirectory: aWorkingDirectory [
 	^ self new
 		pom: pomFileName;
 		template: mustacheTemplateContents;
+		workingDirectory: aWorkingDirectory;
 		yourself
 ]
 
 { #category : #building }
-ReadmeGenerator class >> forPom: pomFileName usingTemplateFileNamed: mustacheTemplateFileName [
+ReadmeGenerator class >> forPom: pomFileName usingTemplateFileNamed: mustacheTemplateFileName inWorkingDirectory: aWorkingDirectory [
 	^ self
 		forPom: pomFileName
 		usingTemplate: mustacheTemplateFileName asFileReference contents
+		inWorkingDirectory: aWorkingDirectory 
 ]
 
 { #category : #generating }
@@ -44,7 +47,7 @@ ReadmeGenerator >> generate [
 			name := (XPath for: 'project/name' in: pomDoc) stringValue.
 			description := (XPath for: 'project/description' in: pomDoc)
 				stringValue.
-			effectivePomDoc := XMLDOMParser parseFileNamed: effectivePomFileName.
+			effectivePomDoc := XMLDOMParser parseFileNamed: (self workingDirectory / effectivePomFileName) fullName.
 			moduleDescriptions := ((XPath
 				for: 'projects/project'
 				in: effectivePomDoc)
@@ -94,6 +97,7 @@ ReadmeGenerator >> generate [
 					| makeOutput |
 					OSSUnixSubprocess new
 						command: 'make';
+						workingDirectory: self workingDirectory fullName;
 						arguments: {wrapped value};
 						redirectStdout;
 						runAndWaitOnExitDo: [ :process :outString | makeOutput := outString ].
@@ -105,6 +109,7 @@ ReadmeGenerator >> generate [
 ReadmeGenerator >> generateEffectivePomFileAndThen: aBlock [
 	OSSUnixSubprocess new
 		command: 'mvn';
+		workingDirectory: self workingDirectory fullName;
 		arguments: #('help:effective-pom' '-Doutput=effective-pom.xml');
 		runAndWaitOnExitDo: [ :process :outString | aBlock value: 'effective-pom.xml' ]
 ]
@@ -127,4 +132,14 @@ ReadmeGenerator >> template [
 { #category : #accessing }
 ReadmeGenerator >> template: anObject [
 	template := anObject
+]
+
+{ #category : #accessing }
+ReadmeGenerator >> workingDirectory [
+	^ workingDirectory
+]
+
+{ #category : #accessing }
+ReadmeGenerator >> workingDirectory: anObject [
+	workingDirectory := anObject
 ]
