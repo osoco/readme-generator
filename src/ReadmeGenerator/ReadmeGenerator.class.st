@@ -1,3 +1,13 @@
+"
+I am a README generator for software projects based on Maven and/or Makefiles.
+
+I generates a README file using a Mustache template and project's metadata fetched
+from sources of truth like Maven POM file and/or Makefiles.
+
+Usage:
+
+(ReadmeGenerator forPom: 'pom.xml' usingTemplateFileNamed: 'README.tmpl') generate.
+"
 Class {
 	#name : #ReadmeGenerator,
 	#superclass : #Object,
