@@ -5,11 +5,9 @@
 ## Description
 
 
-    The README Generator is a Pharo Smalltalk based tool to auto-generate a software project's README file
-    using the metadata fetched from sources of truth like Maven's POM file and/or Makefiles.
-
-    This way you avoid data repetition and inconsistencies in documentation. You should never edit manually
-    your project's README, but regenerate it every time the project's metadata are updated.
+The README Generator is a Pharo Smalltalk based tool to auto-generate a software project's README file using the metadata fetched from sources of truth like Maven's POM file and/or Makefiles.
+    
+This way you avoid data repetition and inconsistencies in documentation. You should never edit manually your project's README, but regenerate it every time the project's metadata are updated.
   
 
 
@@ -50,6 +48,11 @@ run                           Run the generator
 
 
 * [Rafael Luque](https://osoco.es) <[rafael.luque_AT_osoco.es](mailto:rafael.luque_AT_osoco.es)> - [Developer]
+
+
+
+
+eloper]
 
 
 
