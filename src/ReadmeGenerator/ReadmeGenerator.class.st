@@ -40,14 +40,15 @@ ReadmeGenerator class >> forPom: pomFileName usingTemplateFileNamed: mustacheTem
 ReadmeGenerator >> generate [
 	"Generate the README contents using a Mustache template and project metadata from POM file"
 
-	| pomDoc name description effectivePomDoc moduleDescriptions modules developers contributors scmUrl ciUrl issueUrl pomMetadata context |
+	| pomDoc name description effectivePomDoc moduleDescriptions modules developers contributors scmUrl ciUrl issueUrl pomMetadata context licenses |
 	self
 		generateEffectivePomFileAndThen: [ :effectivePomFileName | 
 			pomDoc := XMLDOMParser parseFileNamed: self pom.
 			name := (XPath for: 'project/name' in: pomDoc) stringValue.
 			description := (XPath for: 'project/description' in: pomDoc)
 				stringValue.
-			effectivePomDoc := XMLDOMParser parseFileNamed: (self workingDirectory / effectivePomFileName) fullName.
+			effectivePomDoc := XMLDOMParser
+				parseFileNamed: (self workingDirectory / effectivePomFileName) fullName.
 			moduleDescriptions := ((XPath
 				for: 'projects/project'
 				in: effectivePomDoc)
@@ -66,7 +67,8 @@ ReadmeGenerator >> generate [
 					('email' -> (node elementAt: 'email') stringValue).
 					('organization' -> (node elementAt: 'organization') stringValue).
 					('url' -> (node elementAt: 'url') stringValue).
-					('picUrl' -> (XPath for: 'properties/picUrl' in: node) stringValue).
+					('picUrl'
+						-> (XPath for: 'properties/picUrl' in: node) stringValue).
 					('role' -> (XPath for: 'roles/role' in: node) stringValue)}
 						asDictionary ].
 			contributors := (XPath
@@ -77,9 +79,13 @@ ReadmeGenerator >> generate [
 					('email' -> (node elementAt: 'email') stringValue).
 					('organization' -> (node elementAt: 'organization') stringValue).
 					('url' -> (node elementAt: 'url') stringValue).
-					('picUrl' -> (XPath for: 'properties/picUrl' in: node) stringValue).
+					('picUrl'
+						-> (XPath for: 'properties/picUrl' in: node) stringValue).
 					('role' -> (XPath for: 'roles/role' in: node) stringValue)}
 						asDictionary ].
+			licenses := (XPath for: 'project/licenses/license' in: pomDoc)
+				collect:
+					[ :node | {('name' -> (node elementAt: 'name') stringValue)} asDictionary ].
 			scmUrl := (XPath for: 'project/scm/url' in: pomDoc) stringValue.
 			ciUrl := (XPath for: 'project/ciManagement/url' in: pomDoc)
 				stringValue.
@@ -89,6 +95,7 @@ ReadmeGenerator >> generate [
 			('description' -> description).
 			('developers' -> developers).
 			('contributors' -> contributors).
+			('licenses' -> licenses).
 			('scm' -> {('url' -> scmUrl)} asDictionary).
 			('ciManagement' -> {('url' -> ciUrl)} asDictionary).
 			('issueManagement' -> {('url' -> issueUrl)} asDictionary).
