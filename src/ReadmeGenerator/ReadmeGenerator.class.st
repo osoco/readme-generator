@@ -40,7 +40,7 @@ ReadmeGenerator class >> forPom: pomFileName usingTemplateFileNamed: mustacheTem
 ReadmeGenerator >> generate [
 	"Generate the README contents using a Mustache template and project metadata from POM file"
 
-	| pomDoc name description effectivePomDoc moduleDescriptions modules developers contributors scmUrl ciUrl issueUrl pomMetadata context licenses |
+	| pomDoc name description effectivePomDoc moduleDescriptions modules developers contributors scmUrl ciUrl issueUrl pomMetadata context licenses inner xpathExpression |
 	self
 		generateEffectivePomFileAndThen: [ :effectivePomFileName | 
 			pomDoc := XMLDOMParser parseFileNamed: self pom.
@@ -110,7 +110,13 @@ ReadmeGenerator >> generate [
 						arguments: {wrapped value};
 						redirectStdout;
 						runAndWaitOnExitDo: [ :process :outString | makeOutput := outString ].
-					makeOutput ])} asDictionary.
+					makeOutput ]).
+			('pomXPath'
+				-> [ :wrapped | 
+					inner := wrapped value.
+					xpathExpression := inner copyFrom: 2 to: inner size.
+					(XPath for: xpathExpression  in: pomDoc) stringValue ])}
+				asDictionary.
 			^ self template asMustacheTemplate value: context ]
 ]
 
